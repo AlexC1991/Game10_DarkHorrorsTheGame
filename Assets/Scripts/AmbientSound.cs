@@ -35,7 +35,7 @@ public class AmbientSound : MonoBehaviour
         if (timer > randomNextPlay)
         {
             randomPlay = Random.Range(0, oncePlay.Count);
-            randomNextPlay = Random.Range(4, 8);
+            randomNextPlay = Random.Range(8, 10);
 
 
             SoundSelect(randomPlay);

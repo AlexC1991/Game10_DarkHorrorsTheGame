@@ -15,6 +15,14 @@ public class CollectableCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (counter >= 6)
+        {
+            EndGame();
+        }
+    }
+
+    void EndGame()
+    {
+        Debug.Log("You Win");
     }
 }
