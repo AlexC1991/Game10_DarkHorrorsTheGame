@@ -18,7 +18,7 @@ public class Timer : MonoBehaviour
         timerText.text = formattedTime;
         if (!timerFinished && !MiddleTextUI.killClownSequence)
         {
-            s_Time -= 20 * Time.deltaTime;
+            s_Time -= 2 * Time.deltaTime;
         }
          
         if ( s_Time < 0.2f && m_Time > 0f && !timerFinished )
