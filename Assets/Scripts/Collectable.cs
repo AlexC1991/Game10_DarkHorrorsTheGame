@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+namespace DarkHorrorGame
+{
 public class Collectable : MonoBehaviour
 {
-
-    public GameObject pickUpText; //the pickup text
-
-    CollectableCheck counterUpdate; //the counter to check if player has all the collectables
-
+    [SerializeField] private  GameObject pickUpText;
+    public static bool keyText;
     private bool playerInteract = false;
 
     ParticleSystem particle;
@@ -20,7 +20,6 @@ public class Collectable : MonoBehaviour
 
     void Update()
     {
-
         // check if the player pressed e and if the pick up text is active
        if (pickUpText.activeInHierarchy && Input.GetKeyDown("e"))
         {
@@ -41,7 +40,8 @@ public class Collectable : MonoBehaviour
         //Displays the pickup text if player is in the trigger area
         if (other.CompareTag("Player"))
         {
-            pickUpText.gameObject.SetActive(true);
+            Debug.Log("Detects Player");
+            keyText = true;
         }
     }
 
@@ -61,17 +61,16 @@ public class Collectable : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            pickUpText.gameObject.SetActive(false);
+            keyText = false; 
         }
     }
 
     //playing around with ondisbale
     private void OnDisable()
     {
-        counterUpdate = GameObject.FindGameObjectWithTag("Counter").GetComponent<CollectableCheck>();
-        counterUpdate.counter += 1;
-
-
-        pickUpText.SetActive(false);
+        Debug.Log("Text Disabled On Disabled");
+        CollectableCheck.counter += 1;
+        keyText = false; 
     }
+}
 }

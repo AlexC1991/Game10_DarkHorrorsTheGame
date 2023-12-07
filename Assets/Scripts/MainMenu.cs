@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
 
     public void Replay()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("MainMenu");
         Debug.Log("Reload Scene");
     }
 }

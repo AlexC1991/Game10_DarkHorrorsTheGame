@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+namespace DarkHorrorGame
+{
 public class Timer : MonoBehaviour
 {
     public static float m_Time = 5;
@@ -8,13 +10,13 @@ public class Timer : MonoBehaviour
     public static bool timerFinished;
     [SerializeField] private Text timerText;
     public static bool increaseSizePlease;
-
+    //SerializeField] private endGame;
 
     private void Update()
     {
         string formattedTime = string.Format("Time: {0:00}:{1:00}", m_Time, s_Time);
         timerText.text = formattedTime;
-        if (!timerFinished)
+        if (!timerFinished && !MiddleTextUI.killClownSequence)
         {
             s_Time -= 20 * Time.deltaTime;
         }
@@ -34,4 +36,5 @@ public class Timer : MonoBehaviour
         }
 
     }
+}
 }

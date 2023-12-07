@@ -3,7 +3,7 @@ using System.Threading;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace AlexzanderCowell
+namespace DarkHorrorGame
 {
 
     public class CharacterMovementScript : MonoBehaviour
@@ -49,6 +49,8 @@ namespace AlexzanderCowell
         public static bool _playerIsAttacking;
         private bool _playerIsInAttackRange;
         private Vector3 _playerRotation;
+        public static bool _lookAtClown;
+        [SerializeField] private GameObject enemyTransform;
 
         private void Awake()
         {
@@ -85,7 +87,20 @@ namespace AlexzanderCowell
             //JumpMovement();
             RunningMovement();
             CharacterGravity();
-            CharacterMovementBase();
+
+            if (MiddleTextUI.killClownSequence)
+            {
+                _lookAtClown = true;
+            }
+           
+           if (!_lookAtClown)
+           {
+             CharacterMovementBase();
+           }
+           else
+           {
+             _playerCamera.transform.LookAt(enemyTransform.transform.position);
+           }
         }
 
         private void CharacterMovementBase()
