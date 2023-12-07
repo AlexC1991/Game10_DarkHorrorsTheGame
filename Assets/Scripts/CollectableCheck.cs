@@ -5,8 +5,11 @@ using UnityEngine;
 public class CollectableCheck : MonoBehaviour
 {
 
-    public int counter; //the counter of all the collectables picked up
+    public int counter;
 
+    public GameObject timerText;
+
+    public GameObject gameOverbackground;
     void Start()
     {
         counter = 0;
@@ -24,5 +27,11 @@ public class CollectableCheck : MonoBehaviour
     void EndGame()
     {
         Debug.Log("You Win");
+        timerText.gameObject.SetActive(false);
+        gameOverbackground.gameObject.SetActive(true);
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
     }
 }

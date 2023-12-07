@@ -10,6 +10,14 @@ public class Collectable : MonoBehaviour
     CollectableCheck counterUpdate; //the counter to check if player has all the collectables
 
     private bool playerInteract = false;
+
+    ParticleSystem particle;
+
+    private void Start()
+    {
+        particle = this.GetComponent<ParticleSystem>();
+    }
+
     void Update()
     {
 
@@ -17,6 +25,7 @@ public class Collectable : MonoBehaviour
        if (pickUpText.activeInHierarchy && Input.GetKeyDown("e"))
         {
             playerInteract = true;
+            particle.Play();
         }
 
        // Workaround for not to destroy all game when you walk near them
@@ -34,7 +43,6 @@ public class Collectable : MonoBehaviour
         {
             pickUpText.gameObject.SetActive(true);
         }
-
     }
 
 
@@ -43,7 +51,7 @@ public class Collectable : MonoBehaviour
         //checks if player clicked e and set object to disabled
         if (playerInteract == true)
         {
-            this.gameObject.SetActive(false);
+           this.gameObject.SetActive(false);
         }
     }
 
@@ -62,6 +70,7 @@ public class Collectable : MonoBehaviour
     {
         counterUpdate = GameObject.FindGameObjectWithTag("Counter").GetComponent<CollectableCheck>();
         counterUpdate.counter += 1;
+
 
         pickUpText.SetActive(false);
     }
