@@ -37,5 +37,37 @@ public class ZombieClown : MonoBehaviour
             transform.localScale += scaleChange;
             increaseSize = false; // Reset the flag so it doesn't keep growing without control
         }
+        
+        float distance = Vector3.Distance(characterLocation,transform.position);
+        
+        if (distance < 28f)
+        {
+           // Calculate the direction from the enemy to the player
+   Vector3 directionToPlayer = (characterLocation - transform.position).normalized;
+
+   // Move the enemy in the opposite direction
+   Vector3 newDirection =- directionToPlayer;
+
+   // Set how far you want the enemy to move
+   float moveDistance = 5f; // for example
+
+   // Update the enemy's position
+   transform.position += newDirection * moveDistance * Time.deltaTime;
+        }
+
+        if (distance > 32f)
+        {
+                    // Calculate the direction from the enemy to the player
+   Vector3 directionToPlayer = (characterLocation - transform.position).normalized;
+
+   // Move the enemy in the opposite direction
+   Vector3 newDirection = directionToPlayer;
+
+   // Set how far you want the enemy to move
+   float moveDistance = 5f; // for example
+
+   // Update the enemy's position
+   transform.position += newDirection * moveDistance * Time.deltaTime;
+        }
     }
 }
