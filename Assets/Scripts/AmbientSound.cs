@@ -43,7 +43,7 @@ public class AmbientSound : MonoBehaviour
 
             distance = Vector3.Distance(characterLocation, onceLocation);
 
-            soundOnce.volume = 8/distance;
+            soundOnce.volume = 16/distance;
             soundOnce.PlayAudio();
 
             timer = 0;

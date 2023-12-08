@@ -25,7 +25,7 @@ public class CollectableCheck : MonoBehaviour
 
     void Update()
     {
-        keyCounted.text = ("Keys Located : " + counter).ToString();
+        keyCounted.text = ("Keys Located: " + counter + "/6").ToString();
 
         if (Timer.timerFinished && ZombieClown.clownIsClose)
         {
@@ -34,7 +34,7 @@ public class CollectableCheck : MonoBehaviour
         else if (!Timer.timerFinished && MiddleTextUI.killClownSequence)
         {
              float quickTimer = 2;
-             quickTimer -= Time.deltaTime;
+             quickTimer -= 3 * Time.deltaTime;
 
              if (quickTimer <= 0.2f)
              {
